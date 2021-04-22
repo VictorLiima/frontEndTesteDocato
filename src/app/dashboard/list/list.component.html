@@ -1,0 +1,17 @@
+<main class="main" fxFlex="100%" >
+    <section style="margin-top: 8px; padding: 16px;" *ngIf="usuarios">
+      <h3>Armazenados no Firebase</h3>
+
+      <div *ngFor="let usuario of usuarios" fxLayoutAlign="start">
+        <div fxFlex="100%" fxLayout="row wrap">
+          <p class="descricao">{{usuario._id}}</p>
+          <p class="descricao">{{usuario.nome}}</p>
+          <p class="descricao">{{usuario.email}}</p>
+          <p class="descricao">{{usuario.cpf}}</p>
+          <p class="descricao">{{usuario.nomeDeUsuario}}</p>
+        </div>
+      </div> 
+    </section>
+    <section style="margin-top: 8px; padding: 16px;" *ngIf="!usuarios">
+    nenhum usuário eencontrador</section>
+  </main>
