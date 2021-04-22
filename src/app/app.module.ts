@@ -10,6 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AngularMaterialModule } from './angular-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -24,8 +26,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatInputModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularMaterialModule,
+    FlexLayoutModule
   ],
+  // exports:[
+  //   AngularMaterialModule,
+  //   FlexLayoutModule
+  // ],
   providers: [],
   bootstrap: [AppComponent]
 })
