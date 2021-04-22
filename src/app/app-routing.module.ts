@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 const appRoutes: Routes = [
-  { path: 'login', loadChildren: 'authentication/authentication.module#AuthenticationModule' },
-  { path: 'dashboard', loadChildren: 'dashboard/dashboard.module#DashboardModule'}]
+  { path: 'login', loadChildren: () => AuthenticationModule },
+  { path: 'dashboard', loadChildren: () => DashboardModule }
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
