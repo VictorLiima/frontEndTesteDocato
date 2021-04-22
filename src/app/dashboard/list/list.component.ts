@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
 
 // import { takeUntil} from 'rxjs/operators';
@@ -13,7 +14,7 @@ import { DashboardService } from '../dashboard.service';
 export class ListComponent implements OnInit {
 
   public usuarios:any;
-  constructor(private dashboardService: DashboardService) {
+  constructor(public router: Router, private dashboardService: DashboardService) {
     this.buscarUsuarios();
    }
 
@@ -27,11 +28,10 @@ export class ListComponent implements OnInit {
       console.log('Erro ao consultar Usuarios:', error);
     })
     console.log(this.usuarios);
+  }
 
-    // if (this.usuarios){
-    //   this.usuarios.sort((a, b) => {
-    //     return +a.id - +b.id;
-    //   });
+  goToUpdate(id: string | number){
+    this.router.navigate(['dashboard/editar', id]);
   }
 
 }
