@@ -1,17 +1,25 @@
 <main class="main" fxFlex="100%" >
-    <section style="margin-top: 8px; padding: 16px;" *ngIf="usuarios">
-      <h3>Armazenados no Firebase</h3>
-
-      <div *ngFor="let usuario of usuarios" fxLayoutAlign="start">
-        <div fxFlex="100%" fxLayout="row wrap">
-          <p class="descricao">{{usuario._id}}</p>
-          <p class="descricao">{{usuario.nome}}</p>
-          <p class="descricao">{{usuario.email}}</p>
-          <p class="descricao">{{usuario.cpf}}</p>
-          <p class="descricao">{{usuario.nomeDeUsuario}}</p>
-        </div>
-      </div> 
-    </section>
-    <section style="margin-top: 8px; padding: 16px;" *ngIf="!usuarios">
-    nenhum usuário eencontrador</section>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Nome de Usuário</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let usuario of usuarios; let i = index">
+        <tr>
+          <th scope="row">{{i+1}}</th>
+          <td>{{usuario.nome}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.cpf}}</td>
+          <td>{{usuario.nomeDeUsuario}}</td>
+          <td>
+            <button (click)="this.goToUpdate(usuario._id)"  type="button" class="btn btn-outline-primary">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </main>
