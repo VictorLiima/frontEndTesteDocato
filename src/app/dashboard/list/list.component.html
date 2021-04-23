@@ -1,4 +1,4 @@
-<main class="main" fxFlex="100%" >
+<main class="main" fxFlex="100%" *ngIf="usuarios">
     <table class="table">
       <thead>
         <tr>
@@ -7,6 +7,9 @@
           <th scope="col">Email</th>
           <th scope="col">CPF</th>
           <th scope="col">Nome de Usuário</th>
+          <div class="d-flex flex-row-reverse">
+            <button (click)="this.goToDashboard()" type="button" class="btn btn-outline-secondary">Voltar</button>
+          </div>
         </tr>
       </thead>
       <tbody *ngFor="let usuario of usuarios; let i = index">
@@ -18,6 +21,9 @@
           <td>{{usuario.nomeDeUsuario}}</td>
           <td>
             <button (click)="this.goToUpdate(usuario._id)"  type="button" class="btn btn-outline-primary">Editar</button>
+          </td>
+          <td>
+            <button (click)="this.deleteUser(usuario._id)"  type="button" class="btn btn-outline-danger">Excluir</button>
           </td>
         </tr>
       </tbody>
