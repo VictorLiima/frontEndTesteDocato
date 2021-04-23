@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
+import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -7,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthenticationService {
   public  apiURL = 'localhost:3000'
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private router: Router) { }
 
   // async login(email:string, senha:string){
   //   console.log(email, senha);
@@ -33,6 +35,7 @@ export class AuthenticationService {
    }
 
   async logout(){
-    
+    localStorage.removeItem('Token');
+    this.router.navigate(['/login']);
   }
 }
