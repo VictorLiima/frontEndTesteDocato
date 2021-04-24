@@ -7,21 +7,14 @@ import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
-  declarations: [
-    DashboardComponent,
-    ListComponent,
-    FormComponent
-  ],
+  declarations: [DashboardComponent, ListComponent, FormComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
     FormsModule,
   ],
-  exports:[
-    ListComponent
-  ]
+  exports: [ListComponent],
 })
-export class DashboardModule { }
+export class DashboardModule {}

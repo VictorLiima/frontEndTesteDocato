@@ -13,11 +13,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AngularMaterialModule } from './angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,13 +25,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     HttpClientModule,
     AngularMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   // exports:[
   //   AngularMaterialModule,
   //   FlexLayoutModule
   // ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

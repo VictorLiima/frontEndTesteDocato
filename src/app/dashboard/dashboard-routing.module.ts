@@ -9,11 +9,11 @@ const demandRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'editar/:id', component: FormComponent },
   { path: 'novo', component: FormComponent },
-  { path: 'list', component: ListComponent },
+  { path: 'listar', component: ListComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(demandRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}
