@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../angular-material.module';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 
-
 @NgModule({
   declarations: [LoginComponent],
   imports: [
@@ -13,7 +12,7 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
     ReactiveFormsModule,
     FormsModule,
     AngularMaterialModule,
-    AuthenticationRoutingModule
-  ]
+    AuthenticationRoutingModule,
+  ],
 })
-export class AuthenticationModule { }
+export class AuthenticationModule {}

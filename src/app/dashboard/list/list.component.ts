@@ -5,49 +5,50 @@ import { DashboardService } from '../dashboard.service';
 // import { takeUntil} from 'rxjs/operators';
 // import { MatDialog } from '@angular/material/dialog';
 
-
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  
-  public usuarios:any;
-  constructor(public router: Router, private dashboardService: DashboardService) {
-    this.buscarUsuarios();
-   }
-
-  ngOnInit(): void {
-    console.log(this.usuarios);
+  public usuarios: any;
+  constructor(
+    public router: Router,
+    private dashboardService: DashboardService
+  ) {
+    this.getUsuarios();
   }
 
-  async buscarUsuarios(){
-    this.usuarios = await this.dashboardService.getUsuarios().then(usuariosRetorno => {
-      return usuariosRetorno
-    }).catch(error => {
-      console.log('Erro ao consultar Usuarios:', error);
-    })
-    console.log(this.usuarios);
+  ngOnInit(): void {}
+
+  async getUsuarios() {
+    this.usuarios = await this.dashboardService
+      .getUsuarios()
+      .then((usuariosRetorno) => {
+        return usuariosRetorno;
+      })
+      .catch((error) => {
+        console.log('Erro ao consultar Usuarios:', error);
+      });
   }
 
-  deleteUser(id: string){
-    this.dashboardService.deleteUsuario(id).subscribe(()=>{
+  deleteUser(id: string) {
+    this.dashboardService.deleteUsuario(id).subscribe(
+      () => {
         alert('Usuário excluído com sucesso');
-        this.buscarUsuarios();
-    },
-    error=>{
-        console.log('erro');
-        alert('Erro ao deletar usuário')
-    })
-   }
+        this.getUsuarios();
+      },
+      (error) => {
+        alert('Erro ao deletar usuário');
+      }
+    );
+  }
 
-  goToUpdate(id: string | number){
+  goToUpdate(id: string | number) {
     this.router.navigate(['dashboard/editar', id]);
   }
 
-  goToDashboard(){
+  goToDashboard() {
     this.router.navigate(['dashboard']);
   }
-
 }
