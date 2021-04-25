@@ -1,72 +1,75 @@
-<div class="d-flex justify-content-center align-items-center" *ngIf="formUser">
-  <div class="card p-3">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Easiest Way to Add Input Masks to Your Forms</title>
+  <link href="form.component.css" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="form.component.css" />
+</head>
+<body>
+  <div class="registration-form">
     <form [formGroup]="formUser" (ngSubmit)="submitForm()">
       <div class="form-group">
-        <label for="nome">Nome</label>
-
         <input
           type="text"
+          class="form-control item"
           id="nome"
-          class="form-control"
+          placeholder="Nome"
           formControlName="nome"
         />
       </div>
-
       <div class="form-group">
-        <label for="email">Email</label>
-
         <input
           type="email"
+          class="form-control item"
           id="email"
-          class="form-control"
+          placeholder="Email"
           formControlName="email"
         />
       </div>
-
       <div class="form-group">
-        <label for="senha">Senha</label>
-
         <input
           type="password"
+          class="form-control item"
           id="senha"
-          class="form-control"
+          placeholder="Senha"
           formControlName="senha"
         />
       </div>
-
       <div class="form-group">
-        <label for="cpf">CPF</label>
-
         <input
-          type="text"
+          type="string"
+          class="form-control item"
           id="cpf"
-          class="form-control"
-          formControlName="cpf"
+          placeholder="CPF"
+          formControlName="CPF"
         />
       </div>
-
       <div class="form-group">
-        <label for="nomeDeUsuario">Nome de Usuário</label>
-
         <input
-          type="text"
-          id="nomeDeUsuario"
-          class="form-control"
+          type="string"
+          class="form-control item"
+          id="username"
+          placeholder="Nome De Usuário"
           formControlName="nomeDeUsuario"
         />
       </div>
-
       <div class="form-group">
-        <button class="btn btn-success" type="submit">Gravar</button>
+        <button type="submit" class="btn btn-block create-account">
+          Gravar
+        </button>
         <button
           (click)="this.goToDashboard()"
           type="button"
-          class="btn btn-outline-secondary"
-          style="margin-left: 90px"
+          class="btn btn-block create-account"
         >
           Voltar
         </button>
       </div>
     </form>
   </div>
-</div>
+</body>

@@ -1,31 +1,48 @@
-<div class="d-flex justify-content-center align-items-center">
-  <div class="card p-3">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Easiest Way to Add Input Masks to Your Forms</title>
+  <link href="login.component.css" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="login.component.css" />
+</head>
+<body>
+  <div class="login-form">
     <form [formGroup]="form" (ngSubmit)="login()">
+      <div class="form-icon">
+        <i>Login</i>
+      </div>
       <div class="form-group">
-        <label for="email">E-mail</label>
-
         <input
-          type="text"
+          type="email"
+          class="form-control item"
           id="email"
-          class="form-control"
+          placeholder="Email"
           formControlName="email"
         />
       </div>
-
       <div class="form-group">
-        <label for="senha">Senha</label>
-
         <input
           type="password"
-          id="senha"
-          class="form-control"
+          class="form-control item"
+          id="password"
+          placeholder="Senha"
           formControlName="senha"
         />
       </div>
-
       <div class="form-group">
-        <button class="btn btn-success" type="submit">Entrar</button>
+        <button
+          (click)="login()"
+          type="button"
+          class="btn btn-block create-account"
+        >
+          Cadastre-se
+        </button>
       </div>
     </form>
   </div>
-</div>
+</body>

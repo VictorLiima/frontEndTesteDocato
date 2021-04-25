@@ -2,18 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
   public apiURL = 'localhost:3000';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  getUsuarios(searchText: string = '') {
-    const url = `http://${this.apiURL}/usuarios${
-      searchText === '' ? '' : `?searchText=${searchText}`
+  getUsuarios(page: number, searchText: string = '') {
+    const url = `http://${this.apiURL}/usuarios?${`page=${page}`}${
+      searchText === '' ? '' : `&searchText=${searchText}`
     }`;
+
     return this.http.get<any>(url).toPromise();
   }
 
@@ -102,5 +104,9 @@ export class DashboardService {
         })
       )
       .toPromise();
+  }
+
+  goToCadastroUsuario() {
+    this.router.navigate(['dashboard/novo']);
   }
 }

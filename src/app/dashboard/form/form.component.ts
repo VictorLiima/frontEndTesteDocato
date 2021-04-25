@@ -7,7 +7,7 @@ import { DashboardService } from '../dashboard.service';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
+  styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
   public formUser: any;
@@ -49,7 +49,7 @@ export class FormComponent implements OnInit {
         .subscribe(
           () => {
             alert('Usuário atualizado com sucesso');
-            this.router.navigate(['/dashboard/list']);
+            this.router.navigate(['/dashboard/listar']);
           },
           (error) => {
             console.log('erro');
@@ -90,6 +90,9 @@ export class FormComponent implements OnInit {
     });
   }
 
+  goToListaUsuario() {
+    this.router.navigate(['dashboard/listar']);
+  }
   goToDashboard() {
     this.router.navigate(['dashboard']);
   }
