@@ -85,4 +85,22 @@ export class DashboardService {
         })
       );
   }
+
+  public getProdutos() {
+    //buscando url do servidor no localstorage
+    const token = localStorage.getItem('Token');
+
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', token || '');
+
+    return this.http
+      .get('http://' + this.apiURL + '/docato/produtos', { headers: headers })
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      )
+      .toPromise();
+  }
 }

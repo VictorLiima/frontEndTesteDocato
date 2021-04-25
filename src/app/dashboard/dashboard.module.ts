@@ -6,9 +6,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProdutosComponent } from './produtos/produtos.component';
 
 @NgModule({
-  declarations: [DashboardComponent, ListComponent, FormComponent],
+  declarations: [DashboardComponent, ListComponent, FormComponent, ProdutosComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
