@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
+import { ProdutosComponent } from './produtos/produtos.component';
 
 const demandRoutes: Routes = [
   { path: '', component: DashboardComponent },
@@ -10,6 +11,7 @@ const demandRoutes: Routes = [
   { path: 'editar/:id', component: FormComponent },
   { path: 'novo', component: FormComponent },
   { path: 'listar', component: ListComponent },
+  { path: 'produtos', component: ProdutosComponent },
 ];
 
 @NgModule({
