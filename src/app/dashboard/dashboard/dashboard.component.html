@@ -1,69 +1,73 @@
+<head>
+  <link href="dashboard.component.scss" rel="stylesheet" />
+</head>
 <nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand">Usuário</a>
-  <form class="form-inline">
-    <div class="d-flex align-items-end">
-      <input
-        (change)="changeText($event)"
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button
-        (click)="this.getUsuario()"
-        class="btn btn-outline-success my-2 my-sm-0"
-        type="submit"
-      >
-        Pesquisar
-      </button>
-      <button
-        (click)="this.insertUser()"
-        type="button"
-        class="btn btn-outline-secondary"
-        style="margin-left: 8px"
-      >
-        Adicionar Usuário
-      </button>
-    </div>
-  </form>
+  <a class="navbar-brand" href="/dashboard">Teste Docato</a>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label
+      class="btn btn-secondary"
+      (click)="goToListar()"
+      type="button"
+      name="options"
+      id="option1"
+      autocomplete="off"
+    >
+      Lista de Usuários
+    </label>
+    <label
+      class="btn btn-secondary"
+      (click)="goToProdutos()"
+      type="button"
+      name="options"
+      id="option2"
+      autocomplete="off"
+    >
+      Lista de Produtos Docato
+    </label>
+    <label
+      class="btn btn-secondary"
+      (click)="goToCadastroUsuario()"
+      type="button"
+      name="options"
+      id="option2"
+      autocomplete="off"
+    >
+      Cadastrar Usuário
+    </label>
+  </div>
+  <div class="btn-group btn-group-toggle inline">
+    <label
+      class="btn btn-secondary"
+      (click)="logout()"
+      type="button"
+      name="options"
+      id="option2"
+      autocomplete="off"
+    >
+      logout
+    </label>
+  </div>
 </nav>
-<main class="main" fxFlex="100%" *ngIf="usuarios">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Email</th>
-        <th scope="col">CPF</th>
-        <th scope="col">Nome de Usuário</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let usuario of usuarios; let i = index">
-      <tr>
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ usuario.nome }}</td>
-        <td>{{ usuario.email }}</td>
-        <td>{{ usuario.cpf }}</td>
-        <td>{{ usuario.nomeDeUsuario }}</td>
-        <td>
-          <button
-            (click)="this.goToUpdate(usuario._id)"
-            type="button"
-            class="btn btn-outline-primary"
+
+<main class="main" fxFlex="100%">
+  <body>
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Teste Docato</h1>
+        <p class="lead text-muted">
+          Sistema desenvolvido para testar os conhecimentos em Node.js e Angular
+        </p>
+        <p>
+          <a href="/dashboard/listar" class="btn btn-primary my-2"
+            >Listar Usuários</a
           >
-            Editar
-          </button>
-        </td>
-        <td>
-          <button
-            (click)="this.deleteUser(usuario._id)"
-            type="button"
-            class="btn btn-outline-danger"
+        </p>
+        <p>
+          <a href="/dashboard/produtos" class="btn btn-primary my-2"
+            >Listar Produtos Docato</a
           >
-            Excluir
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </p>
+      </div>
+    </section>
+  </body>
 </main>

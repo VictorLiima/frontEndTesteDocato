@@ -1,49 +1,171 @@
-<main class="main" fxFlex="100%" *ngIf="usuarios">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Email</th>
-        <th scope="col">CPF</th>
-        <th scope="col">Nome de Usuário</th>
-        <div class="d-flex flex-row-reverse">
-          <button
-            (click)="this.goToDashboard()"
-            type="button"
-            class="btn btn-outline-secondary"
-          >
-            Voltar
-          </button>
-        </div>
-      </tr>
-    </thead>
-    <tbody *ngFor="let usuario of usuarios; let i = index">
-      <tr>
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ usuario.nome }}</td>
-        <td>{{ usuario.email }}</td>
-        <td>{{ usuario.cpf }}</td>
-        <td>{{ usuario.nomeDeUsuario }}</td>
-        <td>
-          <button
-            (click)="this.goToUpdate(usuario._id)"
-            type="button"
-            class="btn btn-outline-primary"
-          >
-            Editar
-          </button>
-        </td>
-        <td>
-          <button
-            (click)="this.deleteUser(usuario._id)"
-            type="button"
-            class="btn btn-outline-danger"
-          >
-            Excluir
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</main>
+<link href="list.component.css" rel="stylesheet" />
+<link
+  href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"
+  rel="stylesheet"
+/>
+
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand" href="/dashboard">Teste Docato</a>
+  <div
+    class="btn-group btn-group-toggle inline form-group"
+    data-toggle="buttons"
+  >
+    <div class="btn-group btn-group-toggle inline">
+      <label
+        class="btn btn-secondary"
+        (click)="goToListar()"
+        type="button"
+        name="options"
+        id="option1"
+        autocomplete="off"
+      >
+        Lista de Usuários
+      </label>
+    </div>
+    <div class="btn-group btn-group-toggle inline">
+      <label
+        class="btn btn-secondary"
+        (click)="goToProdutos()"
+        type="button"
+        name="options"
+        id="option2"
+        autocomplete="off"
+      >
+        Lista de Produtos Docato
+      </label>
+    </div>
+    <div class="btn-group btn-group-toggle inline">
+      <label
+        class="btn btn-secondary"
+        (click)="goToCadastroUsuario()"
+        type="button"
+        name="options"
+        id="option3"
+        autocomplete="off"
+      >
+        Cadastrar Usuário
+      </label>
+    </div>
+    <div class="btn-group btn-group-toggle inline">
+      <label
+        class="btn btn-secondary"
+        (click)="goToDashboard()"
+        type="button"
+        name="options"
+        id="option4"
+        autocomplete="off"
+      >
+        Página Inicial
+      </label>
+    </div>
+
+    <div class="btn-group btn-group-toggle inline">
+      <form class="form-inline my-2 my-lg-0">
+        <input
+          (change)="changeText($event)"
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button
+          class="btn btn-outline-primary"
+          type="submit"
+          (click)="this.getUsuario()"
+        >
+          Pesquisar
+        </button>
+      </form>
+    </div>
+  </div>
+  <main class="main" fxFlex="100%" *ngIf="usuarios">
+    <body>
+      <div class="card-header border-0">
+        <h3 class="mb-0">Lista de Usuários</h3>
+      </div>
+
+      <div class="table-responsive">
+        <table id="tableUsuarios" class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">CPF</th>
+              <th scope="col">Nome de Usuário</th>
+              <th scope="col">Editar Usuário</th>
+              <th scope="col">Excluir Usuário</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let usuario of usuarios; let i = index">
+            <tr>
+              <th scope="row">
+                <div class="media align-items-center">
+                  <div class="media-body">
+                    <span class="mb-0 text-sm">{{ i + 1 }}</span>
+                  </div>
+                </div>
+              </th>
+              <td>{{ usuario.nome }}</td>
+              <td>
+                <span class="badge badge-dot mr-4">
+                  {{ usuario.email }}
+                </span>
+              </td>
+              <td>
+                {{ usuario.cpf }}
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="mr-2">{{ usuario.nomeDeUsuario }}</span>
+                </div>
+              </td>
+              <td class="text-right">
+                <div class="d-flex align-items-center">
+                  <button
+                    (click)="this.goToUpdate(usuario._id)"
+                    type="button"
+                    class="btn btn-outline-primary"
+                  >
+                    Editar
+                  </button>
+                </div>
+              </td>
+              <td class="text-right">
+                <div class="d-flex align-items-center">
+                  <button
+                    (click)="this.deleteUser(usuario._id)"
+                    type="button"
+                    class="btn btn-outline-danger"
+                  >
+                    Excluir
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="btn-group btn-group-toggle inline btns-table">
+        <button
+          (click)="this.previousPage()"
+          type="button"
+          class="btn btn-outline-danger"
+        >
+          Anterior
+        </button>
+        <button
+          (click)="this.nextPage()"
+          type="button"
+          class="btn btn-outline-danger"
+        >
+          Próximo
+        </button>
+      </div>
+    </body>
+  </main>
+</nav>

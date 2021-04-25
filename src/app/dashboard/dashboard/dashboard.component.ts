@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,25 +9,24 @@ import { DashboardService } from '../dashboard.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  public usuarios: any;
+  public produtos: any;
   public searchText: string = '';
 
   constructor(
     public router: Router,
-    private dashboardService: DashboardService
-  ) {
-    this.getUsuario();
-  }
+    private dashboardService: DashboardService,
+    private authenticationService: AuthenticationService
+  ) {}
   ngOnInit(): void {}
 
-  async getUsuario() {
-    this.usuarios = await this.dashboardService
-      .getUsuarios(this.searchText)
-      .then((usuariosRetorno) => {
-        return usuariosRetorno;
+  async getProdutos() {
+    this.produtos = await this.dashboardService
+      .getProdutos()
+      .then((produtosRetorno) => {
+        return produtosRetorno;
       })
       .catch((error) => {
-        console.log('Erro ao consultar Usuarios:', error);
+        console.log('Erro ao consultar Produtos:', error);
       });
   }
 
@@ -34,16 +34,20 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['dashboard/editar', id]);
   }
 
-  deleteUser(id: string) {
-    this.dashboardService.deleteUsuario(id).subscribe(
-      () => {
-        alert('Usuário excluído com sucesso');
-        this.getUsuario();
-      },
-      (error) => {
-        alert('Erro ao deletar usuário');
-      }
-    );
+  goToListar() {
+    this.router.navigate(['dashboard/listar']);
+  }
+
+  goToProdutos() {
+    this.router.navigate(['dashboard/produtos']);
+  }
+
+  goToDashboard() {
+    this.router.navigate(['dashboard']);
+  }
+
+  goToCadastroUsuario() {
+    this.router.navigate(['dashboard/novo']);
   }
 
   insertUser() {
@@ -52,5 +56,9 @@ export class DashboardComponent implements OnInit {
 
   changeText(ev: any) {
     this.searchText = ev.target.value || '';
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
+import { DashboardService } from '../../dashboard/dashboard.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent {
   constructor(
     public router: Router,
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private dashboardService: DashboardService
   ) {
     this.criarForm();
   }
