@@ -1,27 +1,72 @@
 # FrontEndTesteDocato
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
+Projeto desenvolvido utilizando [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
 
-## Development server
+### Vamos Começar
+- Com a API do projeto ja em execução
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- execute `npm install` para instalar as bibliotecas utilizadas no projeto
 
-## Code scaffolding
+- Execute `ng serve` para iniciar o servidor do projeto. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Navegue até `http://localhost:4200/`. 
 
-## Build
+- O servidor irá carregar automaticamente todas as alterações feitas no código.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Vamos Começar
 
-## Running unit tests
+- Execute: npm i
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Tome um cafézinho
 
-## Running end-to-end tests
+- Execute: npm start
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- Agora a api está rodando 
 
-## Further help
+### dump de registros.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Primeiro verifique se você tem o MongoDB instalado em sua máquina
+
+- Os registros solicitados estão todos na pasta ./dump
+
+- Popule seu banco com o arquivo databaseInicial.json
+
+- A partir de agora seu login será primeiro@gmail.com e a senha de acesso é primeiro
+
+- Guarde essas informações! 
+
+- Se api não estiver rodando localmente, altere o arquivo app.js, substitua o conteúdo da constate "urlServer", pelo IP que a api irá rodar
+
+- Faça o mesmo processo com a constante "banco", coloque o nome do banco criado no mongo
+
+- Na pasta models, no arquivo user.js, atualize o nome da coleção criada, na constante "colecao".
+
+- Caso queira mais alguns usuários, popule seu banco com o arquivo databaseTeste.json
+
+## Rotas da API
+
+- Após ter feito o dump do na ÂPI, você poderá efetuar login com o usuário e senha lá descritos.
+
+### Autenticação
+
+- Login com email e senha
+    POST
+        /login
+
+### Usuários
+
+- O botão `Lista de Usuários` irá retornar os usuários cadastrados no banco
+
+- Ira apresentar 10 usuários por página
+
+
+- Digitanto parte do nome ou email de algum usuário e acionando o botão `Pesquisar`, será retornado os usuários com os campos correspondentes.
+
+- Ao lado de cada usuário na tabela, terá dois botões, um para editar o usuário, e um para excluir o mesmo.
+
+  
+- O botão `Cadastro de Usuários` vai redirecionar para o formulário de cadastro
+
+
+### Produtos Docato
+- O botão `Lista de Produtos Docato` vai acionar o Crawler, e retornará os produtos listados no site `www.docato.com.br`, com o botão contratar caso queira contratar algum serviço.
